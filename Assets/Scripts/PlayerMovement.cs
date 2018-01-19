@@ -1,51 +1,68 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour {
 
-	 public Rigidbody rigidbody;
-	 public Transform PlayerTransform;
-	public Vector3 Start_Position;
+	
+	bool Right;
+	bool Left;
 
-	bool Right = false;
+	bool Forward;
+	bool Backward;
 
 	// Use this for initialization
 	void Start () {
 		// rigidbody.useGravity = true;
-		Start_Position.x = 0;
-		Start_Position.y = 1;
-		Start_Position.z = 4.18f;
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(PlayerTransform.position.y<-1){
-			PlayerTransform.position = Start_Position;
+
+	
+		if(transform.position.y<-1){
+			FindObjectOfType<GameManager>().EndGame();
 		}
 
 		if(Right){
-			rigidbody.AddForce(100*Time.deltaTime, 0 ,0, ForceMode.VelocityChange);
-			
+			GetComponent<Rigidbody>().AddForce(50 * Time.deltaTime,0,0, ForceMode.VelocityChange);
 		}
 
-		Right = false;
-	}
+		if(Left){
+			GetComponent<Rigidbody>().AddForce(-50 * Time.deltaTime,0,0, ForceMode.VelocityChange);
+		}
 
-	public void Move_Right(){
-		Right = true;
+		if(Forward){
+			GetComponent<Rigidbody>().AddForce(0,0,50* Time.deltaTime, ForceMode.VelocityChange);
+		}
+
+		if(Backward){
+			GetComponent<Rigidbody>().AddForce(0,0,-50* Time.deltaTime, ForceMode.VelocityChange);
+		}
 		
 	}
 
-	public void Move_Left(){
-		rigidbody.AddForce(-100*Time.deltaTime, 0 ,0, ForceMode.VelocityChange);
+	public void onRightDown(bool down){
+		Right = down;
 	}
 
-	public void Move_Forward(){
-		rigidbody.AddForce(0, 0 , 100* Time.deltaTime, ForceMode.VelocityChange);
+	public void OnLeftDown(bool down){
+		Left = down;
 	}
 
-	public void Move_BackWard(){
-		rigidbody.AddForce(0, 0 , -100* Time.deltaTime, ForceMode.VelocityChange);
+	public void OnForwardDown(bool down){
+		Forward = down;
 	}
+
+	public void OnBackwardDown(bool down){
+		Backward = down;
+	}
+
+
+
+
+
+
 }
