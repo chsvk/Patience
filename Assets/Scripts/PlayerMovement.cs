@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 
 	
 		if(transform.position.y<-1){
@@ -59,10 +59,5 @@ public class PlayerMovement : MonoBehaviour {
 	public void OnBackwardDown(bool down){
 		Backward = down;
 	}
-
-
-
-
-
 
 }

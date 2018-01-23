@@ -14,6 +14,18 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void EndGame(){
+		Invoke("ResetParameters", 1f);
+	}
+
+	public void LevelComplete(){
+		Invoke("LevelCompleted", 1f);
+	}
+
+	void ResetParameters(){
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
+
+	void LevelCompleted(){
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 	}
 }
