@@ -24,7 +24,9 @@ public class MovableObstacle : MonoBehaviour {
 			hitOnce = true;
 		}
 		if(other.collider.tag == "Player" & (hitOnce)){
-			GetComponent<MeshCollider>().enabled = false;
+			// GetComponent<MeshRenderer>().enabled = false;
+			// GetComponent<BoxCollider>().enabled = false;
+			GetComponent<Rigidbody>().mass = 0.2f;
 		}
 	}
 }

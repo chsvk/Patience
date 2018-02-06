@@ -11,8 +11,8 @@ public class FollowPlayer : MonoBehaviour {
 	void Start () {
 		
 		offset.x = 0;
-		offset.y = 1f;
-		offset.z = -3.5f;
+		offset.y = 2.8f;
+		offset.z = -6.4f;
 	}
 	
 	// Update is called once per frame
