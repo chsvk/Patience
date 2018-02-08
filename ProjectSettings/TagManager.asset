@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - LevelComplete
+  - Move
   layers:
   - Default
   - TransparentFX
