@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingObstacle : MonoBehaviour {
+public class LeftRight1 : MonoBehaviour {
 
-	bool direction = true;
+	// Use this for initialization
+bool direction = true;
 
 	// Use this for initialization
 	void Start () {
